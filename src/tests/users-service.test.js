@@ -147,8 +147,6 @@ describe('findAllUsers',  () => {
     usersWeInserted.forEach(user => {
       const username = usernames.find(username => username === user.username);
       expect(user.username).toEqual(username);
-      expect(user.password).toEqual(`${username}123`);
-      expect(user.email).toEqual(`${username}@stooges.com`);
     });
   });
 });
