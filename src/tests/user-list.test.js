@@ -13,19 +13,17 @@ const MOCKED_USERS = [
   {username: 'sarah_conor', password: 'illbeback', email: 'sarah@bigjeff.com', _id: "234"},
 ]
 
-test('user list renders static user array',
-    () => {
-      mock.mockImplementation(()=> {
-        render(
-            <HashRouter>
-              <UserList users={MOCKED_USERS}/>
-            </HashRouter>)
-        const linkElement = screen.getByText(/ellen_ripley/i);
-        expect(linkElement).toBeInTheDocument()
-      }
-    )
+test('user list renders static user array', () => {
+    render(
+        <HashRouter>
+            <UserList  users={MOCKED_USERS}/>
+        </HashRouter>
+    );
+    const linkElement = screen.getByText(/ellen_ripley/i);
+    expect(linkElement).toBeInTheDocument();
+});
 
-    });
+
 
 test('user list renders async', async () => {
   mock.mockRestore();

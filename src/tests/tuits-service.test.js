@@ -4,7 +4,6 @@ import {
     findTuitById,
     findAllTuits
 } from "../services/tuits-service"
-import tuit from "../components/tuits/tuit";
 
 
 describe('can create tuit with REST API', () => {
