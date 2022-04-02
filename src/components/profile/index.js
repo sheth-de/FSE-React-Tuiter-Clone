@@ -18,6 +18,7 @@ const Profile = () => {
       navigate('/login');
     }
   }, []);
+
   const logout = () => {
     service.logout()
         .then(() => navigate('/login'));

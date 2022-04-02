@@ -1,6 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import * as service from "../../services/likes-service";
+
+
 
 const TuitStats = ({tuit, likeTuit = () => {}}) => {
+    const [likedTuits, setLikedTuis] = useState([]);
+    const findTuitsILike = () =>
+        service.findAllTuitsLikedByUser("me")
+            .then((tuits) => setLikedTuis(tuits));
+    useEffect(findTuitsILike, []);
+    const userLiked = false;
+    const checkIfUserLikedATuit = () => {
+        
+    }
     return (
       <div className="row mt-2">
         <div className="col">
@@ -18,16 +30,24 @@ const TuitStats = ({tuit, likeTuit = () => {}}) => {
         <div className="col">
           <span className="ttr-like-tuit-click" onClick={() => likeTuit(tuit)}>
               {
-                tuit.stats && tuit.stats.likes && tuit.stats.likes > 0 &&
-                  <i className="fas fa-heart me-1" style={{color: 'red'}}></i>
+
               }
-              {
-                tuit.stats && tuit.stats.likes && tuit.stats.likes <= 0 &&
-                  <i className="far fa-heart me-1"></i>
+                      <i className="fa-regular fa-thumbs-up" ></i>
+              {tuit.stats &&
+                      <span className="ttr-stats-likes">{tuit.stats && tuit.stats.likes}</span>
               }
-            <span className="ttr-stats-likes">{tuit.stats && tuit.stats.likes}</span>
-          </span>
+               </span>
         </div>
+          <div className="col">
+          <span className="ttr-like-tuit-click" onClick={() => likeTuit(tuit)}>
+              {
+                  <>
+                      <i className="fa-regular fa-thumbs-down" ></i>
+                      <span className="ttr-stats-likes">{tuit.stats && tuit.stats.likes}</span>
+                  </>
+              }
+          </span>
+          </div>
         <div className="col">
           <i className="far fa-inbox-out"></i>
         </div>
