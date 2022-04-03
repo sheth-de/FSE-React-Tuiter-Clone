@@ -27,13 +27,19 @@ const TuitStats = ({tuit, likeTuit = () => {}, dislikeTuit = () => {}}) => {
             });
     }
 
-    useEffect(async () => {
+    const checkProfile = async () => {
         try {
             const user = await securityservice.profile();
             findTuitsILike()
             findTuitsIDislike()
         } catch (e) {
         }
+
+    }
+
+
+    useEffect( () => {
+       checkProfile()
     }, []);
 
     return (
@@ -52,7 +58,8 @@ const TuitStats = ({tuit, likeTuit = () => {}, dislikeTuit = () => {}}) => {
         </div>
         <div className="col">
           <span className="ttr-like-tuit-click" onClick={() => {
-              likeTuit(tuit)
+                  likeTuit(tuit)
+
               if(liked){
                   setLiked(false)
               }
@@ -92,7 +99,7 @@ const TuitStats = ({tuit, likeTuit = () => {}, dislikeTuit = () => {}}) => {
                   <i className="fa-regular fa-thumbs-down" ></i>
               }
               {tuit.stats &&
-                  <span className="ttr-stats-likes">{tuit.stats && tuit.stats.dislikes}</span>
+                  <span className="ttr-stats-dislikes">{tuit.stats && tuit.stats.dislikes}</span>
               }
                </span>
           </div>

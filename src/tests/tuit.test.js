@@ -1,4 +1,4 @@
-import Tuit from "./tuit";
+import Tuit from "../components/tuits/tuit";
 import {render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
 

@@ -1,5 +1,5 @@
-import Tuits from "./index";
-import tuitsData from "./tuits-data.json"
+import Tuits from "../components/tuits";
+import tuitsData from "../components/tuits/tuits-data.json"
 import {act, create} from "react-test-renderer";
 import {HashRouter} from "react-router-dom";
 

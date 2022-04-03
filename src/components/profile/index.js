@@ -16,6 +16,7 @@ const Profile = () => {
       setProfile(user);
     } catch (e) {
       navigate('/login');
+      window.location.reload(false);
     }
   }, []);
 
